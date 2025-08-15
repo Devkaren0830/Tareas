@@ -39,6 +39,9 @@ app.set('views',
 app.get('/', (req, res) => {
     res.render('index');
 });
+app.get('/tasks/new', (req, res) => {
+    res.render('tasks/new');
+});
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
