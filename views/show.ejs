@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+<h1><%= task.title %></h1>
+<p><%= task.description %></p>
+
+<a href="/tasks/<%= task.id %>/edit">Editar</a>
+<form action="/tasks/<%= task.id %>?_method=DELETE" method="POST">
+  <button type="submit">Borrar</button>
+</form>
+
+<a href="/tasks">Volver a la lista</a>
+
+<%- include('partials/footer') %>

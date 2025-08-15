@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+
+<h1>Editar Tarea</h1>
+<form action="/tasks/<%= task.id %>?_method=PUT" method="POST">
+  <label for="title">Título:</label>
+  <input type="text" id="title" name="title" value="<%= task.title %>" required>
+  <br>
+  <label for="description">Descripción:</label>
+  <textarea id="description" name="description" required><%= task.description %></textarea>
+  <br>
+  <button type="submit">Actualizar</button>
+</form>
+
+<%- include('partials/footer') %>
