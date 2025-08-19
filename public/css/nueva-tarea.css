@@ -1,0 +1,64 @@
+.nueva-tarea-form {
+    max-width: 100%;
+    width: 480px;
+    border-radius: 1rem;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    padding: 2rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.nueva-tarea-header {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.nueva-tarea-header::before,
+.nueva-tarea-header::after {
+    content: '🎈';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+
+.nueva-tarea-header::before {
+    left: -1.5rem;
+}
+
+.nueva-tarea-header::after {
+    right: -1.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #333;
+}
+
+.form-control {
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    padding: 0.5rem;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: none;
+}
+
+.btn-warning {
+    background-color: #80bdff;
+    border-color: #80bdff;
+    color: #fff;
+    border-radius: 2rem;
+    transition: background-color 0.2s;
+}
+
+.btn-warning:hover {
+    background-color: #e67600;
+}

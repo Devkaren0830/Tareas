@@ -1,3 +1,5 @@
+/* Cambia el verde (#38ef7d) por un azul (#3fa7ff) */
+
 /* Reset básico */
 * {
     margin: 0;
@@ -15,9 +17,9 @@ body {
 /* Header */
 .header {
     background: rgba(30, 30, 40, 0.95);
-    padding: 32px 0 24px 0;
+    padding: 20px 0 24px 0;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
-    border-bottom: 2px solid #38ef7d;
+    border-bottom: 2px solid #3fa7ff;
 }
 
 .container {
@@ -30,13 +32,13 @@ body {
 }
 
 .logo a {
-    color: #38ef7d;
+    color: #3fa7ff;
     text-decoration: none;
     font-size: 26px;
     font-weight: bold;
     letter-spacing: 3px;
     text-transform: uppercase;
-    text-shadow: 0 4px 16px #38ef7d33;
+    text-shadow: 0 4px 16px #3fa7ff33;
     transition: color 0.3s;
 }
 
@@ -62,9 +64,9 @@ body {
 }
 
 .nav a:hover {
-    background: #38ef7d;
+    background: #3fa7ff;
     color: #181818;
-    box-shadow: 0 2px 12px #38ef7d55;
+    box-shadow: 0 2px 12px #3fa7ff55;
 }
 
 /* Footer */
@@ -74,15 +76,14 @@ body {
     margin-top: 64px;
     text-align: center;
     box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.25);
-    border-top: 2px solid #38ef7d;
-    position: fixed;
+    border-top: 2px solid #3fa7ff;
     left: 0;
     bottom: 0;
     width: 100%;
 }
 
 .footer p {
-    color: #b0ffda;
+    color: #b0e0ff;
     font-size: 16px;
     letter-spacing: 1.2px;
     opacity: 0.85;
