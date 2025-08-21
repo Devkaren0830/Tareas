@@ -1,14 +1,228 @@
-<%- include('partials/header') %>
+<%- include('../partials/header') %>
 
-<h1>Nueva Tarea</h1>
-<form action="/tasks" method="POST">
-  <label for="title">Título:</label>
-  <input type="text" id="title" name="title" required>
-  <br>
-  <label for="description">Descripción:</label>
-  <textarea id="description" name="description" required></textarea>
-  <br>
-  <button type="submit">Crear</button>
-</form>
 
-<%- include('partials/footer') %>
+
+
+    <!-- Nuevo HTML -->
+    <main>
+        <div class="task-card">
+            <div class="task-card__header">
+                <img src="https://img.icons8.com/fluency/96/task.png" alt="Task Icon" class="task-card__icon" />
+                <h2 class="task-card__title">Nueva Tarea</h2>
+                <p class="task-card__subtitle">Agrega una tarea a tu lista</p>
+            </div>
+            <form class="task-card__form" action="/tasks" method="POST">
+                <div class="form-group">
+                    <label for="taskTitle">Título de la tarea</label>
+                    <input type="text" id="taskTitle" name="title" placeholder="Título de la tarea" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Descripción</label>
+                    <textarea id="taskDescription" name="description" rows="4" placeholder="Describe la tarea"
+                        required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskDueDate">Fecha de vencimiento</label>
+                        <input type="date" id="taskDueDate" name="dueDate">
+                    </div>
+                    <div class="form-group">
+                        <label>Prioridad</label>
+                        <div class="priority-checks">
+                            <label class="check-label">
+                                <input type="radio" name="priority" value="baja"> Baja
+                            </label>
+                            <label class="check-label">
+                                <input type="radio" name="priority" value="media"> Media
+                            </label>
+                            <label class="check-label">
+                                <input type="radio" name="priority" value="alta"> Alta
+                            </label>
+                        </div>
+                    </div>
+                    <style>
+                        .priority-checks {
+                            display: flex;
+                            gap: 1rem;
+                            margin-top: 0.3rem;
+                        }
+
+                        .check-label {
+                            display: flex;
+                            align-items: center;
+                            font-weight: 500;
+                            color: #fff;
+                            gap: 0.3rem;
+                            cursor: pointer;
+                        }
+
+                        .priority-checks input[type="radio"] {
+                            accent-color: var(--accent-1);
+                            width: 1.1em;
+                            height: 1.1em;
+                            margin-right: 0.2em;
+                            cursor: pointer;
+                        }
+                    </style>
+                </div>
+                <div class="form-group">
+                    <label for="taskAssignee">Asignado a</label>
+                    <input type="text" id="taskAssignee" name="assignee" placeholder="Responsable">
+                </div>
+                <button type="submit" class="btn-submit">Crear tarea</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- CSS sugerido -->
+    <style>
+        .task-card {
+            background: var(--shadow);
+            border-radius: var(--radius);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18), var(--shadow);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            margin: 2rem;
+            transition: transform .2s, box-shadow .2s;
+            margin-left: 25%;
+        }
+
+        .task-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .task-card__header {
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .task-card__header::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            opacity: .2;
+            border-radius: 50%;
+        }
+
+        .task-card__icon {
+            width: 64px;
+            margin-bottom: .5rem;
+        }
+
+        .task-card__title {
+            margin: 0;
+            color: var(--accent-1);
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .task-card__subtitle {
+            margin: .25rem 0 0;
+            color: #f0f0f0;
+            font-size: 1rem;
+        }
+
+        .task-card__form {
+            padding: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: .5rem;
+            color: #ffffff;
+        }
+
+        input,
+        textarea,
+        select {
+            font-family: var(--font);
+            padding: .6rem .8rem;
+            border: 1.5px solid #e0e0e0;
+            border-radius: var(--radius);
+            background: var(--shadow) !important;
+            transition: border-color .2s, box-shadow .2s;
+            color: #fff !important;
+        }
+
+        select {
+            font-family: var(--font);
+            padding: .6rem .8rem;
+            border: 1.5px solid #e0e0e0;
+            border-radius: var(--radius);
+            background-color: #0056b3;
+            transition: border-color .2s, box-shadow .2s;
+            color: #000;
+            appearance: none;
+        }
+
+        select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+            background-color: #0056b3;
+            color: #000;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+            color: #fff;
+            background: var(--shadow) !important;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: .75rem;
+            border: none;
+            border-radius: var(--radius);
+            background: linear-gradient(90deg, var(--accent-1) 60%, var(--accent-2));
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 3px 14px rgba(0, 123, 255, .15);
+            transition: background .2s, box-shadow .2s;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(90deg, #0056b3, var(--accent-1));
+            box-shadow: 0 6px 20px rgba(0, 123, 255, .2);
+        }
+
+        @media (max-width: 480px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .task-card {
+                margin: 1rem;
+            }
+        }
+    </style>
+    <%- include('../partials/footer') %>

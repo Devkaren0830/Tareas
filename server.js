@@ -40,6 +40,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/new_tasks', (req, res) => {
+    res.render('tasks/new');
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
