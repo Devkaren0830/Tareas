@@ -26,48 +26,20 @@
                         <label for="taskDueDate">Fecha de vencimiento</label>
                         <input type="date" id="taskDueDate" name="dueDate">
                     </div>
-                    <div class="form-group">
-                        <label>Prioridad</label>
-                        <div class="priority-checks">
-                            <label class="check-label">
-                                <input type="radio" name="priority" value="baja"> Baja
-                            </label>
-                            <label class="check-label">
-                                <input type="radio" name="priority" value="media"> Media
-                            </label>
-                            <label class="check-label">
-                                <input type="radio" name="priority" value="alta"> Alta
-                            </label>
-                        </div>
-                    </div>
-                    <style>
-                        .priority-checks {
-                            display: flex;
-                            gap: 1rem;
-                            margin-top: 0.3rem;
-                        }
-
-                        .check-label {
-                            display: flex;
-                            align-items: center;
-                            font-weight: 500;
-                            color: #fff;
-                            gap: 0.3rem;
-                            cursor: pointer;
-                        }
-
-                        .priority-checks input[type="radio"] {
-                            accent-color: var(--accent-1);
-                            width: 1.1em;
-                            height: 1.1em;
-                            margin-right: 0.2em;
-                            cursor: pointer;
-                        }
-                    </style>
                 </div>
                 <div class="form-group">
-                    <label for="taskAssignee">Asignado a</label>
-                    <input type="text" id="taskAssignee" name="assignee" placeholder="Responsable">
+                    <label>Prioridad</label>
+                    <div class="priority-checks">
+                        <label class="check-label">
+                            <input type="radio" name="priority" value="baja"> Baja
+                        </label>
+                        <label class="check-label">
+                            <input type="radio" name="priority" value="media"> Media
+                        </label>
+                        <label class="check-label">
+                            <input type="radio" name="priority" value="alta"> Alta
+                        </label>
+                    </div>
                 </div>
                 <button type="submit" class="btn-submit">Crear tarea</button>
             </form>
@@ -76,6 +48,14 @@
 
     <!-- CSS sugerido -->
     <style>
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+
         .task-card {
             background: var(--shadow);
             border-radius: var(--radius);
@@ -85,7 +65,6 @@
             width: 100%;
             margin: 2rem;
             transition: transform .2s, box-shadow .2s;
-            margin-left: 25%;
         }
 
         .task-card:hover {
@@ -213,6 +192,29 @@
         .btn-submit:hover {
             background: linear-gradient(90deg, #0056b3, var(--accent-1));
             box-shadow: 0 6px 20px rgba(0, 123, 255, .2);
+        }
+
+        .priority-checks {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .check-label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: #fff;
+            gap: 0.3rem;
+            cursor: pointer;
+        }
+
+        .priority-checks input[type="radio"] {
+            accent-color: var(--accent-1);
+            width: 1.1em;
+            height: 1.1em;
+            margin-right: 0.2em;
+            cursor: pointer;
         }
 
         @media (max-width: 480px) {
