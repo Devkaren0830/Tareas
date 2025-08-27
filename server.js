@@ -1,6 +1,8 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import Database from './src/database/database.js';
+const BD = new Database();
 // Path es para trabajar con rutas de archivos y directorios.
 // Permite crear rutas absolutas y relativas de manera segura y compatible con diferentes sistemas operativos
 // fileURLToPath:
