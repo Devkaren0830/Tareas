@@ -8,6 +8,23 @@ class Database {
     db;
     constructor() {
         this.db = this.iniciar_base_de_datos();
+        this.tablas();
+    }
+
+    tablas() {
+        this.crearTabla(
+            `
+                CREATE TABLE IF NOT EXISTS Tareas (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Titulo TEXT NOT NULL,
+                Descripcion TEXT,
+                FechaCreacion Double NOT NULL,
+                FechaVencimiento Double,
+                Prioridad INTEGER NOT NULL
+            )
+        `,
+            this.db
+        );
     }
 
     iniciar_base_de_datos() {
@@ -23,20 +40,14 @@ class Database {
     }
 
 
-    ejecutar_consulta(
-        tabla, params = []) {
+    async ejecutar_consulta(sql, params = []) {
         return new Promise((resolve, reject) => {
-            db.run(sql, params, function (err) {
+            this.db.run(sql, params, function (err) {
                 if (err) {
-                    // Si hay un error, rechaza la promesa
-                    reject({
-                        estado: false,
-                        mensaje: 'Error en el servidor por favor intente mas tarde',
-                        data: err
-                    });
+                    reject(
+                        new Error(`Error al ejecutar la consulta: ${err.message}`)
+                    )
                 } else {
-                    // Si no hay error, resuelve la promesa con el resultado
-                    // this.lastID y this.changes son muy útiles para INSERT/UPDATE/DELETE
                     resolve({
                         estado: true,
                         mensaje: 'Consulta ejecutada correctamente',
@@ -45,6 +56,29 @@ class Database {
                 }
             });
         });
+    }
+
+
+
+    async crearTabla(sql) {
+
+        try {
+            // Usamos await para esperar a que el comando se complete
+            const resultado = await this.ejecutar_consulta(sql);
+            console.log("¡Tabla 'usuarios' creada con éxito!");
+            return resultado;
+        } catch (error) {
+            // Si la tabla ya existe, el error podría ser "SQLITE_ERROR", 
+            // pero el comando "CREATE TABLE IF NOT EXISTS" lo maneja.
+            console.error("Error al crear la tabla:", error.message);
+
+            // Aquí en lugar de 'throw error' devolvemos un objeto controlado
+            return {
+                estado: false,
+                mensaje: "No se pudo crear la tabla",
+                data: error
+            };
+        }
     }
 }
 

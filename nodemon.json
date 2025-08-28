@@ -2,7 +2,9 @@
     "watch": [
         "server.js",
         "views",
-        "public"
+        "public",
+        "database",
+        "src"
     ],
     "ext": "js,ejs,css",
     "ignore": [
