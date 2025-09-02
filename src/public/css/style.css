@@ -6,6 +6,13 @@
     --radius: 12px;
     --shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     --font: 'Segoe UI', sans-serif;
+    --bg-dark: #2c2f33;
+    --card-dark: #3c3f44;
+    --text-light: #f0f2f5;
+    --text-muted: #a0a2a5;
+    --primary-color: #5865f2;
+    /* Azul para el botón principal */
+    --hover-color: #4752c4;
 }
 
 * {
@@ -68,6 +75,10 @@ body {
     padding: 8px 18px;
     border-radius: 6px;
     transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+main {
+    min-height: 100vh;
 }
 
 .nav a:hover {

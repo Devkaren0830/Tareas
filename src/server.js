@@ -46,8 +46,20 @@ app.set('views',
 );
 
 app.use(router);
+// Ruta para manejar errores 404 (Not Found)
+app.use((req, res, next) => {
+    res.status(404).render('404');
+});
+
+// Otros errores (opcional)
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Algo salió mal!');
+});
 
 // app.
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
+
+export default BD;

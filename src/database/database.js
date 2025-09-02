@@ -42,19 +42,43 @@ class Database {
 
     async ejecutar_consulta(sql, params = []) {
         return new Promise((resolve, reject) => {
-            this.db.run(sql, params, function (err) {
-                if (err) {
-                    reject(
-                        new Error(`Error al ejecutar la consulta: ${err.message}`)
-                    )
-                } else {
-                    resolve({
-                        estado: true,
-                        mensaje: 'Consulta ejecutada correctamente',
-                        data: { id: this.lastID, cambios: this.changes }
-                    });
-                }
-            });
+            // Para obtener filas, debes usar db.all en lugar de db.run
+            // Si la consulta es SELECT, usamos all, si no, usamos run
+            const isSelect = sql.trim().toUpperCase().startsWith('SELECT');
+            if (isSelect) {
+                this.db.all(sql, params, function (err, rows) {
+                    if (err) {
+                        reject(
+                            new Error(`Error al ejecutar la consulta: ${err.message}`)
+                        );
+                    } else {
+                        resolve({
+                            estado: true,
+                            mensaje: 'Consulta ejecutada correctamente',
+                            data: {
+                                rows: rows
+                            }
+                        });
+                    }
+                });
+            } else {
+                this.db.run(sql, params, function (err) {
+                    if (err) {
+                        reject(
+                            new Error(`Error al ejecutar la consulta: ${err.message}`)
+                        );
+                    } else {
+                        resolve({
+                            estado: true,
+                            mensaje: 'Consulta ejecutada correctamente',
+                            data: {
+                                id: this.lastID,
+                                cambios: this.changes
+                            }
+                        });
+                    }
+                });
+            }
         });
     }
 

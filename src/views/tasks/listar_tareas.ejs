@@ -1,0 +1,135 @@
+<%- include('../partials/header') %>
+
+    <style>
+        /* Estilos generales del cuerpo */
+        /* Estilo para el título principal */
+        .header-title {
+            color: #4C95E1;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        /* Contenedor de las tarjetas de tareas */
+        .task-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 10px;
+        }
+
+        /* Estilo individual de cada tarjeta */
+        .task-card {
+            background-color: #2E3B4E;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: calc(33% - 20px);
+            /* Para 3 tarjetas por fila en escritorio */
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Estilo del título de la tarea */
+        .task-title {
+            color: #92E1F4;
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        /* Estilo de la descripción */
+        .task-description {
+            color: #A0B3C4;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Estilo para las fechas */
+        .task-dates {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #A0B3C4;
+        }
+
+        .task-dates span {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Adaptación para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .task-card {
+                width: calc(50% - 20px);
+                /* 2 tarjetas por fila en tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .task-card {
+                width: 100%;
+                /* 1 tarjeta por fila en móviles */
+            }
+        }
+    </style>
+
+    <main>
+        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
+            <button onclick="separarTareasPorPrioridad(this)"
+                style="background-color: #6c757d; color: white; border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer;">
+                Bajo
+            </button>
+            <button onclick="separarTareasPorPrioridad(this)"
+                style="background-color: #ffc107; color: #212529; border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer;">
+                Medio
+            </button>
+            <button onclick="separarTareasPorPrioridad(this)"
+                style="background-color: #dc3545; color: white; border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer;">
+                Alto
+            </button>
+            <button onclick="separarTareasPorPrioridad(this)"
+                style="color: white; border: none; border-radius: 8px; padding: 10px 20px; cursor: pointer;">
+                Todos
+            </button>
+        </div>
+        <div class="task-list">
+            <div prioridad="{Prioridad}" class="task-card">
+                <h3 class="task-title">{Titulo}</h3>
+                <p class="task-description">{Descripcion}</p>
+                <div class="task-dates">
+                    <span>{FechaCreacion}</span>
+                    <span>{FechaVencimiento}</span>
+                </div>
+            </div>
+        </div>
+        <script>
+            function separarTareasPorPrioridad(prioridad) {
+                debugger;
+                document.querySelectorAll('.task-card').forEach(element => {
+                    element.style.display = 'none';
+                });
+                let tareas = [];
+                if (prioridad.textContent.trim().toLowerCase() === 'todos') {
+                    tareas = document.querySelectorAll('.task-card');
+                } else if (prioridad.textContent.trim().toLowerCase() === 'bajo') {
+                    tareas = document.querySelectorAll('.task-card[prioridad="1"]');
+                } else if (prioridad.textContent.trim().toLowerCase() === 'medio') {
+                    tareas = document.querySelectorAll('.task-card[prioridad="2"]');
+                } else if (prioridad.textContent.trim().toLowerCase() === 'alto') {
+                    tareas = document.querySelectorAll('.task-card[prioridad="3"]');
+                }
+
+
+                tareas.forEach(element => {
+                    element.style.display = 'block';
+                });
+
+            }
+        </script>
+    </main>
+    <%- include('../partials/footer') %>

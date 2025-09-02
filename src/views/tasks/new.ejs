@@ -11,7 +11,7 @@
                 <h2 class="task-card__title">Nueva Tarea</h2>
                 <p class="task-card__subtitle">Agrega una tarea a tu lista</p>
             </div>
-            <form class="task-card__form" action="/api/agregar_tarea" method="POST">
+            <form class="task-card__form" action="" method="">
                 <div class="form-group">
                     <label for="taskTitle">Título de la tarea</label>
                     <input type="text" id="taskTitle" name="title" placeholder="Título de la tarea" required>
@@ -31,17 +31,18 @@
                     <label>Prioridad</label>
                     <div class="priority-checks">
                         <label class="check-label">
-                            <input type="radio" name="priority" value="baja"> Baja
+                            <input type="radio" name="priority" value="3"> Baja
                         </label>
                         <label class="check-label">
-                            <input type="radio" name="priority" value="media"> Media
+                            <input type="radio" name="priority" value="2"> Media
                         </label>
                         <label class="check-label">
-                            <input type="radio" name="priority" value="alta"> Alta
+                            <input type="radio" name="priority" value="1"> Alta
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="btn-submit">Crear tarea</button>
+                <button type="button" onclick="crearNuevaTarea('Hola', 'Perola')" class="btn-submit">Crear
+                    tarea</button>
             </form>
         </div>
     </main>
@@ -227,4 +228,5 @@
             }
         }
     </style>
+    <script src="/js/new_task.js"></script>
     <%- include('../partials/footer') %>

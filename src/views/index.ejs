@@ -1,8 +1,215 @@
 <%- include('partials/header') %>
 
-<h1>Lista de Tareas</h1>
+    <main class="main-content">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Simplifica tu día, una tarea a la vez.</h1>
+                <p class="hero-subtitle">
+                    Organiza tus ideas y proyectos de manera eficiente. GESTOR DE TAREAS te ayuda a
+                    mantenerte enfocado en lo que realmente importa.
+                </p>
+                <a href="/new_task" class="cta-button">¡Empieza ahora!</a>
+            </div>
+            <div class="hero-image">
+                <img src="/images/task-illustration.svg" alt="Ilustración de una persona organizando tareas">
+            </div>
+        </section>
 
+        <section class="features-section">
+            <h2 class="section-title">¿Por qué usar GESTOR DE TAREAS?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="bi bi-check2-circle feature-icon"></i>
+                    <h3 class="feature-title">Organización intuitiva</h3>
+                    <p class="feature-description">
+                        Crea y categoriza tus tareas con facilidad. Nuestra interfaz es tan simple que la
+                        dominarás en segundos.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="bi bi-clock feature-icon"></i>
+                    <h3 class="feature-title">Recordatorios a tiempo</h3>
+                    <p class="feature-description">
+                        Establece fechas de vencimiento y no vuelvas a olvidar una tarea importante.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="bi bi-award feature-icon"></i>
+                    <h3 class="feature-title">Motivación diaria</h3>
+                    <p class="feature-description">
+                        Marca tus tareas como completadas y observa tu progreso. Cada tarea terminada es
+                        un pequeño logro.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<a href="/tasks/new">Crear nueva tarea</a>
+        <section class="call-to-action-section">
+            <h2 class="cta-title">¿Listo para ser más productivo?</h2>
+            <a href="/new_task" class="cta-button-secondary">Crear mi primera tarea</a>
+        </section>
+    </main>
 
-<%- include('partials/footer') %>
+    <style>
+        /* Base de estilos para el main */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 0;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Sección Hero */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 3rem;
+            padding: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Sección de Características */
+        .features-section {
+            width: 100%;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        .features-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .feature-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .feature-description {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* Sección de Llamada a la Acción */
+        .call-to-action-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            background-color: var(--bg-secondary);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .cta-button-secondary {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-secondary:hover {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        /* Media Queries para diseño responsive */
+        @media (min-width: 768px) {
+            .hero-section {
+                flex-direction: row;
+                text-align: left;
+            }
+
+            .hero-content {
+                align-items: flex-start;
+            }
+        }
+    </style>
+
+    <%- include('partials/footer') %>
