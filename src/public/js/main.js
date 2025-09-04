@@ -38,7 +38,7 @@ function reeplazar_html(htmlm, objeto) {
     let html = htmlm;
     for (const key in objeto) {
         const element = objeto[key];
-        html = html.replace(`{${key}}`, element);
+        html = html.replaceAll(`{${key}}`, element);
     }
     return html;
 }
@@ -47,7 +47,8 @@ function construir_tareas() {
     let html_final = "";
     if (global.listarTareas) {
         global.listarTareas.forEach(tarea => {
-            html_final += reeplazar_html(global.Lista_Tareas_Html, tarea);
+            let html = reeplazar_html(global.Lista_Tareas_Html, tarea);
+            html_final += html;
         });
         document.querySelector(".task-list").innerHTML = html_final;
     }
