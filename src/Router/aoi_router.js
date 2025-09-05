@@ -30,7 +30,8 @@ router_api.get('/api/listar_tareas', async (req, res) => {
     console.log("Llegó un get a /api/listar_tareas");
     try {
         const resultado = await BD.ejecutar_consulta(
-            `SELECT * FROM Tareas ORDER BY FechaCreacion DESC`
+            `SELECT * FROM Tareas WHERE Estado = ? ORDER BY FechaCreacion DESC`,
+            [0]
         );
         console.log(resultado);
         resultado.data.rows.forEach(tarea => {

@@ -20,7 +20,8 @@ class Database {
                 Descripcion TEXT,
                 FechaCreacion Double NOT NULL,
                 FechaVencimiento Double,
-                Prioridad INTEGER NOT NULL
+                Prioridad INTEGER NOT NULL,
+                Estado integer not null default 0
             )
         `,
             this.db

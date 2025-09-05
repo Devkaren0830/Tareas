@@ -1,0 +1,109 @@
+ /* Estilos generales del cuerpo */
+ /* Estilo para el título principal */
+ .header-title {
+     color: #4C95E1;
+     font-size: 2.5rem;
+     margin-bottom: 40px;
+ }
+
+ /* Contenedor de las tarjetas de tareas */
+ .task-list {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
+     justify-content: center;
+     width: 100%;
+     max-width: 1000px;
+     margin-top: 10px;
+ }
+
+ /* Estilo individual de cada tarjeta */
+ .task-card {
+     background-color: #2E3B4E;
+     border-radius: 15px;
+     padding: 25px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+     width: calc(33% - 20px);
+     /* Para 3 tarjetas por fila en escritorio */
+     box-sizing: border-box;
+     transition: transform 0.3s ease;
+ }
+
+ .task-card:hover {
+     transform: translateY(-5px);
+ }
+
+ /* Estilo del título de la tarea */
+ .task-title {
+     color: #92E1F4;
+     font-size: 1.5rem;
+     margin-top: 0;
+ }
+
+ /* Estilo de la descripción */
+ .task-description {
+     color: #A0B3C4;
+     font-size: 1rem;
+     line-height: 1.5;
+ }
+
+ /* Estilo para las fechas */
+ .task-dates {
+     margin-top: 20px;
+     font-size: 0.9rem;
+     color: #A0B3C4;
+ }
+
+ .task-dates span {
+     display: block;
+     margin-bottom: 5px;
+ }
+
+ .filter-btn {
+     border: none;
+     border-radius: 8px;
+     padding: 10px 20px;
+     cursor: pointer;
+     transition: background 0.3s ease, transform 0.2s ease;
+ }
+
+ .filter-btn.active {
+     outline: 2px solid #fff;
+     /* borde visible */
+     transform: scale(1.05);
+     /* un poco más grande */
+ }
+
+ .btn_eliminar_tarea {
+     background-color: #e74c3c;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     padding: 8px 16px;
+     cursor: pointer;
+ }
+
+ .btn_editar_tarea {
+     background-color: #5547aa;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     padding: 8px 16px;
+     cursor: pointer;
+ }
+
+
+ /* Adaptación para pantallas más pequeñas */
+ @media (max-width: 768px) {
+     .task-card {
+         width: calc(50% - 20px);
+         /* 2 tarjetas por fila en tablets */
+     }
+ }
+
+ @media (max-width: 480px) {
+     .task-card {
+         width: 100%;
+         /* 1 tarjeta por fila en móviles */
+     }
+ }
